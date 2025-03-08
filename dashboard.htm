@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h2>Profile Page</h2>
+        <div class="header-right">
+            <form action="dasboard.html.htm">
+                <img id="profileIcon" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"  style="width:50px; height:50px; padding-left:20% padding-right:10%" alt="Profile Icon" class="profile-icon" onclick="redirectToProfile()">
+            </form>
+            <button id="verificationBtn" class="tick-btn grey-tick" onclick="redirectToUpload()">✔</button>
+        </div>
+    </header>
+
+    <br><br><br>
+
+    <div class="card-container">
+        <div class="card">
+            <img src="https://images.newscientist.com/wp-content/uploads/2021/02/05110628/bill-gates-author-photo_web.jpg" alt="Bill Gates" id="imagee">
+            <div class="card-content">
+                <p><a>Bill Gates</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/OIP.UMp8X2hm-_a3hUP5OhrzqgHaEK?rs=1&pid=ImgDetMain" alt="Elon Musk" id="imagee">
+            <div class="card-content">
+                <p><a>Elon Musk</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://th.bing.com/th/id/OIP.EXCixuSABOMOFWub9kMnNgAAAA?rs=1&pid=ImgDetMain" alt="Jeff Bezos" id="imagee">
+            <div class="card-content">
+                <p><a>Jeff Bezos</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="Steve Jobs" id="imagee">
+            <div class="card-content">
+                <p><a>Steve Jobs</a></p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://img.etimg.com/thumb/width-1200,height-900,imgsize-33498,resizemode-75,msid-103135746/news/company/corporate-trends/ril-agm-2023-mukesh-ambani-to-remain-chairman-md-of-the-company-for-next-five-years.jpg" alt="Mukesh Ambani" id="imagee">
+            <div class="card-content">
+                <p><a>Mukesh Ambani</a></p>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+
+    <div class="card-container1">
+        <div class="card1">
+            <img src="https://cdn.inc42.com/wp-content/uploads/2020/05/tech-social-1.jpg" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://zd-brightspot.s3.us-east-1.amazonaws.com/800x450/wp-content/uploads/2023/09/05181029/top-10-tech-events-in-September-2023.jpg" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://assets-global.website-files.com/61f29c609f84a86e418fbcfb/63ede8e02e7fbbfcc86660f1_20230216T0824-44d9d8ac-5466-448b-bdea-5c9fb09d60d2.png" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://th.bing.com/th/id/OIP.nOiI_PZU3K-AV6pERF8SXAHaFU?rs=1&pid=ImgDetMain" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://media.istockphoto.com/id/1147714605/vector/hackathon-forum-concept-card-3d-isometric-view-vector.jpg?s=612x612&w=0&k=20&c=ZCiBzNfqSrreQDv6tF-ZXj6Im3JvxaiqAegT-TGsBew=" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://media.istockphoto.com/photos/hackathon-technology-threat-online-coding-3d-illustration-picture-id1061070132?k=6&m=1061070132&s=612x612&w=0&h=udyX61pSVPJQtQcmM8pOtTNtgORp4zPRhkA5jUCSd54=" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://th.bing.com/th/id/OIP.jZA9MCehhamAxGr_1n2c6gAAAA?rs=1&pid=ImgDetMain" alt="">
+        </div>
+        <div class="card1">
+            <img src="https://th.bing.com/th/id/OIP.W0nYTdoU9mn8ZDhDYBqO6gHaHa?rs=1&pid=ImgDetMain" alt="">
+        </div>
+    </div>
+
+    <script>
+        
+        const profilePic = document.getElementById('profilePic');
+        const uploadPic = document.getElementById('uploadPic');
+    
+        window.onload = function () {
+            let savedName = localStorage.getItem("profileName");
+            let savedBio = localStorage.getItem("profileBio");
+            let savedEmail = localStorage.getItem("profileEmail");
+            let savedPic = localStorage.getItem("profilePic");
+    
+            if (savedName) document.getElementById('displayName').textContent = savedName;
+            if (savedBio) document.getElementById('displayBio').textContent = savedBio;
+            if (savedEmail) document.getElementById('displayEmail').textContent = savedEmail;
+            if (savedPic) profilePic.src = savedPic;
+
+            if (savedPic) {
+                document.getElementById("profileIcon").src = savedPic;
+            }
+
+            if (sessionStorage.getItem("certificatesUploaded") === "true") {
+                let button = document.getElementById("verificationBtn");
+                button.classList.remove("grey-tick");
+                button.classList.add("green-tick");
+                button.onclick = null;
+            }
+        };
+    
+        function openPopup() {
+            document.getElementById('popupBox').style.display = 'block';
+        }
+    
+        function closePopup() {
+            document.getElementById('popupBox').style.display = 'none';
+        }
+    
+        uploadPic.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePic.src = e.target.result; 
+                    localStorage.setItem("profilePic", e.target.result);  // Save the uploaded picture
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    
+        function saveProfile() {
+            const name = document.getElementById('name').value.trim();
+            const bio = document.getElementById('bio').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const emailError = document.getElementById('emailError');
+    
+            if (!validateEmail(email)) {
+                emailError.style.display = 'block';
+                return;
+            } else {
+                emailError.style.display = 'none';
+            }
+    
+            // Save profile details to localStorage
+            localStorage.setItem("profileName", name);
+            localStorage.setItem("profileBio", bio);
+            localStorage.setItem("profileEmail", email);
+    
+            // Close the popup after saving
+            closePopup();
+        }
+    
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+
+        function redirectToProfile() {
+            window.location.href = "profilepage.htm";  // Redirect to profile page to upload or edit
+        }
+
+        function redirectToUpload() {
+            window.location.href = "profilepage2.htm";
+        }
+
+        // Open the chat box when the button is clicked
+        document.getElementById("chatBtn").onclick = function() {
+            document.getElementById("chatBox").style.display = "block";
+        };
+
+        // Close the chat box
+        document.getElementById("closeChat").onclick = function() {
+            document.getElementById("chatBox").style.display = "none";
+        };
+
+        // Handle sending messages
+        document.getElementById("sendBtn").onclick = function() {
+            let userMessage = document.getElementById("userInput").value;
+            if (userMessage.trim()) {
+                appendMessage('user', userMessage);
+                document.getElementById("userInput").value = ""; 
+                 setTimeout(function() {
+                    let aiResponse = "AI response: " + userMessage; // Simulated response
+                    appendMessage('ai', aiResponse);
+                }, 1000);
+            }
+        };
+        function appendMessage(sender, message) {
+            let chatMessages = document.getElementById("chatMessages");
+            let messageDiv = document.createElement("div");
+            messageDiv.classList.add(sender);
+            messageDiv.textContent = message;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to the bottom
+        }
+    </script>
+    <footer>
+        <div class="chat-container">
+            <button id="chatBtn" class="chat-btn">Chat with Mentor</button>
+            <div id="chatBox" class="chat-box">
+                <div class="chat-box-header">
+                    <h3>AI Chat</h3>
+                    <button id="closeChat" class="close-chat-btn">X</button>
+                </div>
+                <div id="chatMessages" class="chat-messages">
+                </div>
+                <textarea id="userInput" class="user-input" placeholder="Type your message..."></textarea>
+                <button id="sendBtn" class="send-btn">Send</button>
+            </div>
+        </div>
+    
+    </footer>
+</body>
+</body>
+</html>
